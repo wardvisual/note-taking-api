@@ -1,0 +1,28 @@
+{
+  "name": "astronautaking-api",
+  "version": "1.0.0",
+  "description": "backend part of ng16-demo-app(astronautaking app)",
+  "main": "./src/index.ts",
+  "scripts": {
+    "start": "node dist/app.js",
+    "start:dev": "nodemon",
+    "build": "npx tsc -p tsconfig.json "
+  },
+  "keywords": [],
+  "author": "Edward Fernandez",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "rango": "0.7.3-beta.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.13",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.1.6"
+  }
+}
