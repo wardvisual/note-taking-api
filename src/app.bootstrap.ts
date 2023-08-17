@@ -1,5 +1,4 @@
-import { PORT } from "~/constants";
-import { Module } from "~/types";
+import { Module, Moduleable } from "@/astronautaking-api/types";
 
 import rango, { Context } from "rango";
 import { RangoApp } from "rango/lib/app";
@@ -11,9 +10,9 @@ export class App {
     this.server = rango();
   }
 
-  public startApp() {
-    this.server.listen(PORT, () =>
-      console.log(`Your app is running at http://localhost:${PORT}`)
+  public listen(port: number) {
+    this.server.listen(port, () =>
+      console.log(`Your app is running at http://localhost:${port}`)
     );
   }
 
@@ -23,9 +22,14 @@ export class App {
     }
   }
 
-  public registerModule(modules: Module[]): void {
-    for (const module of modules) {
-      this.server.add(module);
-    }
+  public registerModules(modules: Module[]): void {
+    let _modules: any = [];
+
+    modules.forEach(
+      async ({ methods, ...rangoAtributes }) =>
+        await _modules.push({ ...rangoAtributes, ...methods })
+    );
+
+    this.server.add(_modules);
   }
 }
