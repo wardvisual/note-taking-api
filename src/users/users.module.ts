@@ -1,48 +1,30 @@
 import { Module, Moduleable } from "@/astronautaking-api/types";
 
-import { UserController } from "./users.controllers";
-
-// export const UsersModule: Moduleable = {
-//   path: "users",
-//   routes: {
-//     "/": {
-//       GET: UserController.getUsers,
-//     },
-//     ":id": {
-//       GET: UserController.getUser,
-//     },
-//     "/login": {
-//       POST: UserController.loginUser,
-//     },
-//     "/register": {
-//       POST: UserController.registerUser,
-//     },
-//   },
-// };
+import { UsersController } from "./users.controllers";
 
 export const UsersModule: Module[] = [
   {
     path: "users",
     methods: {
-      GET: UserController.getUsers,
+      GET: UsersController.getUsers,
     },
   },
   {
     path: "users/:userId",
     methods: {
-      GET: UserController.getUser,
+      GET: UsersController.getUser,
     },
   },
   {
     path: "users/register",
     methods: {
-      POST: UserController.registerUser,
+      POST: UsersController.registerUser,
     },
   },
   {
     path: "users/login",
     methods: {
-      POST: UserController.loginUser,
+      POST: UsersController.loginUser,
     },
   },
 ];
