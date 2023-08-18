@@ -1,8 +1,10 @@
+import "reflect-metadata";
+
 import { App } from "./app.bootstrap";
 import cors from "cors";
 import bodyParser from "body-parser";
 
-import { PORT } from "@/astronautaking-api/constants";
+import { APP_PORT } from "@/astronautaking-api/constants";
 
 import { modules } from "./app.module";
 
@@ -18,7 +20,7 @@ const init = (): void => {
 
     app.registerModules(modules);
 
-    app.listen(3000);
+    app.listen(APP_PORT);
   } catch (error) {
     process.exit(1);
   }
