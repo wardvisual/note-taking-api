@@ -34,7 +34,8 @@
     "paths": {
       "@/astronautaking-api/constants": ["./src/shared/constants"],
       "@/astronautaking-api/types": ["./src/shared/types"],
-      "@/astronautaking-api/configs": ["./src/configs"]
+      "@/astronautaking-api/configs": ["./src/configs"],
+      "@/astronautaking-api/database": ["./src/configs/database"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     "typeRoots": [
