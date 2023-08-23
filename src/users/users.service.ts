@@ -3,17 +3,19 @@ import { User } from "./entities/user.entity";
 import { RegisterUser } from "./dto/register-user.dto";
 
 export class UsersService {
-  public dataSource: DataSource;
+  public static dataSource: typeof dataSource.dataSource;
 
   constructor() {
-    this.dataSource = dataSource;
+    UsersService.dataSource = dataSource.dataSource;
   }
 
-  public async registerUser(user: RegisterUser) {
-    const response = await this.dataSource.dataSource
-      .getMongoRepository(User)
-      .insertOne(user);
+  public static async registerUser(user: any) {
+    // const response = await this.dataSource
+    //   .getMongoRepository(User)
+    //   .insertOne(user);
 
-    console.log({ response });
+    console.log({ user });
   }
 }
+
+export const usersService = new UsersService();

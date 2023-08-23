@@ -1,13 +1,11 @@
 import { Context } from "rango";
-import { UsersService, usersService } from './users.service';
+import { UsersService, usersService } from "./users.service";
+import { User } from "./entities/user.entity";
+import { RegisterUser } from "./dto/register-user.dto";
 
 export class UsersController {
-  public service: UsersService
-  
-  constructor() { 
-    this.service = usersService.
-   }
-  
+  static usersService: typeof usersService;
+
   static getUsers(context: Context) {
     return "hello users";
   }
@@ -16,9 +14,10 @@ export class UsersController {
     return "hello user";
   }
 
-  static registerUser(context: Context) {
-    this.service.
-    return context.body;
+  public static async registerUser(context: Context) {
+    // const user = await UsersService.registerUser(context.body as RegisterUser);
+
+    return "registerUser method";
   }
 
   static loginUser(context: Context) {
