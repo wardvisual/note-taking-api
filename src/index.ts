@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 
 import { APP_PORT } from "@/astronautaking-api/constants";
 
-import { modules } from "./app.module";
+import { routes } from "./app.routes";
 
 const init = (): void => {
   try {
@@ -18,7 +18,7 @@ const init = (): void => {
       bodyParser.urlencoded({ extended: true }),
     ]);
 
-    app.registerModules(modules);
+    app.registerModules(routes);
 
     app.listen(APP_PORT);
   } catch (error) {
