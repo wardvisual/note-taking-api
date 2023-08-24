@@ -2,11 +2,12 @@ import { UsersService, usersService } from "./users.service";
 import { User } from "./entities/user.entity";
 import { RegisterUser } from "./dto/register-user.dto";
 
+import { Request, Response } from "express";
+
 export class UsersController {
   static usersService: typeof usersService;
 
-  static getUsers(req: any, res: any) {
-    console.log("hey");
+  static getUsers(req: Request, res: Response) {
     res.json("UsersService.getUsers()");
   }
 
