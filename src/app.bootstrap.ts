@@ -1,13 +1,14 @@
-import { Module, Moduleable } from "@/astronautaking-api/types";
+import { Module } from "@/astronautaking-api/types";
 
-import rango, { Context } from "rango";
-import { RangoApp } from "rango/lib/app";
+import express, { Application, Router } from "express";
 
 export class App {
-  private readonly server: RangoApp;
+  private readonly server: Application;
+  private readonly route: Router;
 
   constructor() {
-    this.server = rango();
+    this.server = express();
+    this.route = express.Router();
   }
 
   public listen(port: number) {
@@ -22,14 +23,9 @@ export class App {
     }
   }
 
-  public registerModules(modules: Module[]): void {
-    let _modules: any = [];
-
-    modules.forEach(
-      async ({ methods, ...rangoAtributes }) =>
-        await _modules.push({ ...rangoAtributes, ...methods })
-    );
-
-    this.server.add(_modules);
+  public registerModules(routes: Module[]): void {
+    routes.forEach((route: Module) => {
+      this.server.use("/api/v1", this.route.use(`/${route.path}`, route.route));
+    });
   }
 }
