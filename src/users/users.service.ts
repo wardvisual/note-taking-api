@@ -1,20 +1,22 @@
-import { DataSource, dataSource } from "@/astronautaking-api/database";
+import { getDataSource } from "@/astronautaking-api/database";
 import { User } from "./entities/user.entity";
 import { RegisterUser } from "./dto/register-user.dto";
+import { Repository } from "typeorm";
 
 export class UsersService {
-  public static dataSource: typeof dataSource.dataSource;
+  private userRepositoryPromise: Promise<Repository<User>>;
 
   constructor() {
-    UsersService.dataSource = dataSource.dataSource;
+    this.userRepositoryPromise = getDataSource().then((dataSource) =>
+      dataSource.getRepository(User)
+    );
   }
 
-  public static async registerUser(user: any) {
-    // const response = await this.dataSource
-    //   .getMongoRepository(User)
-    //   .insertOne(user);
+  public async registerUser(user: RegisterUser) {
+    const userRepository = await this.userRepositoryPromise;
+    const response = await userRepository.save(user);
 
-    console.log({ user });
+    return response;
   }
 }
 
