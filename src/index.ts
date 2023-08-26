@@ -26,4 +26,4 @@ const init = (): void => {
   }
 };
 
-init(); 
+init();

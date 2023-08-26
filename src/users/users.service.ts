@@ -18,6 +18,14 @@ export class UsersService {
 
     return response;
   }
+
+  public async getUsers(): Promise<User | User[]> {
+    const userRepository = await this.userRepositoryPromise;
+
+    const response: User | User[] = await userRepository.find();
+
+    return response;
+  }
 }
 
 export const usersService = new UsersService();
