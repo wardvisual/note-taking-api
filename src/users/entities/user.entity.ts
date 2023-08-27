@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { Notes } from "src/notes/entities/notes.entity";
+import { Column, Entity, ObjectIdColumn, OneToMany } from "typeorm";
 
 @Entity()
 export class User {
@@ -20,4 +21,7 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Notes, (note) => note.userId)
+  notes: Notes[];
 }
