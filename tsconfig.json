@@ -1,32 +1,28 @@
 {
-   "compilerOptions": {
-      "lib": [
-         "es5",
-         "es6"
-      ],
-      "target": "es5",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "outDir": "./build",
-      "rootDir": "./",
-      "baseUrl": "./",
-      "paths": {
-         "@/astronautaking-api/constants": ["./src/shared/constants"],
-         "@/astronautaking-api/types": ["./src/shared/types"],
-         "@/astronautaking-api/configs": ["./src/configs"],
-         "@/astronautaking-api/database": ["./src/configs/database"]
-       },
-       "esModuleInterop": true,
-       "typeRoots": [
-         "node_modules/@types",
-         "src/shared/types"
-       ],
-       "forceConsistentCasingInFileNames": true,
-       "strict": true,
-       "strictNullChecks": false,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "sourceMap": true
-   },
-   "include": ["src/**/*"]
+  "compilerOptions": {
+    "lib": ["es5", "es6"],
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "rootDir": "./",
+    "baseUrl": "./",
+    "declaration": true,
+    "paths": {
+      "@/astronautaking-api/constants": ["./src/shared/constants"],
+      "@/astronautaking-api/types": ["./src/shared/types"],
+      "@/astronautaking-api/services": ["./src/shared/services"],
+      "@/astronautaking-api/configs": ["./src/configs"],
+      "@/astronautaking-api/database": ["./src/configs/database"]
+    },
+    "esModuleInterop": true,
+    "typeRoots": ["node_modules/@types", "src/shared/types"],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"]
 }
