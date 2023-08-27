@@ -1,11 +1,10 @@
 import "reflect-metadata";
 
-import { App } from "./app.bootstrap";
 import cors from "cors";
 import bodyParser from "body-parser";
 
+import { App } from "./app.bootstrap";
 import { APP_PORT } from "@/astronautaking-api/constants";
-
 import { routes } from "./app.routes";
 
 const init = (): void => {
@@ -20,8 +19,9 @@ const init = (): void => {
 
     app.registerModules(routes);
 
-    app.listen(4000);
+    app.listen(APP_PORT);
   } catch (error) {
+    console.log({ API_ERROR: error });
     process.exit(1);
   }
 };

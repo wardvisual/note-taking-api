@@ -27,7 +27,7 @@ const initializeDataSource = async () => {
     console.log("DB Connected!");
   } catch (err) {
     console.log("Failed to initialize the data source:", err);
-    // Perform additional error handling or logging here
+    throw err;
   }
 };
 
