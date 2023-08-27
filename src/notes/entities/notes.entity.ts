@@ -10,8 +10,8 @@ export class Notes {
   @Column()
   title: string;
 
-  @Column()
-  createdAt: string;
+  @Column({ default: Date.now() })
+  createdAt: Date;
 
   @Column()
   content: string;

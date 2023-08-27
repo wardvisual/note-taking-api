@@ -5,5 +5,5 @@ export const NotesRoutes: Router = Router();
 
 NotesRoutes.get("/", notesController.findAll);
 NotesRoutes.post("/", notesController.create);
-NotesRoutes.post("/:id", notesController.remove);
-NotesRoutes.post("/:id", notesController.update);
+NotesRoutes.delete("/:id", notesController.remove);
+NotesRoutes.patch("/:id", notesController.update);

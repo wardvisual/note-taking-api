@@ -7,31 +7,31 @@ import { notesService } from "./notes.service";
 import { UpdateNote } from "./dto/update-note";
 
 export class NotesController {
-  async findAll(req: Request, res: Response): Promise<APIResponse<Notes[]>> {
+  async findAll(req: Request, res: Response): Promise<void> {
     const notes = await notesService.findAll();
 
-    return notes;
+    res.json(notes);
   }
 
-  async create(req: Request, res: Response): Promise<APIResponse<Notes>> {
+  async create(req: Request, res: Response): Promise<void> {
     const note = await notesService.create(req.body as CreateNote);
 
-    return note;
+    res.json(note);
   }
 
-  async remove(req: Request, res: Response): Promise<APIResponse<Notes>> {
-    const note = await notesService.remove(req.params.id);
+  async remove(req: Request, res: Response): Promise<void> {
+    const note = await notesService.remove(req.query.id as string);
 
-    return note;
+    res.json(note);
   }
 
-  async update(req: Request, res: Response): Promise<APIResponse<Notes>> {
+  async update(req: Request, res: Response): Promise<void> {
     const note = await notesService.update(
-      req.params.id,
+      req.query.id as string,
       req.body as UpdateNote
     );
 
-    return note;
+    res.json(note);
   }
 }
 

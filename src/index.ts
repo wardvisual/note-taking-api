@@ -20,7 +20,7 @@ const init = (): void => {
 
     app.registerModules(routes);
 
-    app.listen(APP_PORT);
+    app.listen(4000);
   } catch (error) {
     process.exit(1);
   }

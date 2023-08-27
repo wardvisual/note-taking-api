@@ -31,12 +31,17 @@ export class NotesService {
   async create(note: CreateNote): Promise<APIResponse<Notes>> {
     const notesRepository = await this.noteRepositoryPromise;
 
-    const newNote = notesRepository.create(note);
+    const newNote = await notesRepository.save(note);
+
+    if (!newNote)
+      return {
+        isSuccess: false,
+        message: "Note not created",
+      } satisfies APIResponse;
 
     return {
       isSuccess: true,
       message: "Note created",
-      data: newNote,
     } as APIResponse<Notes>;
   }
 
@@ -53,12 +58,11 @@ export class NotesService {
         message: "Note not found",
       } satisfies APIResponse;
 
-    const removedNote = await notesRepository.remove(noteToRemove);
+    await notesRepository.remove(noteToRemove);
 
     return {
       isSuccess: true,
       message: "Note removed",
-      data: removedNote,
     } as APIResponse<Notes>;
   }
 
@@ -68,6 +72,8 @@ export class NotesService {
     const noteToUpdate = await notesRepository.findOne({
       where: { id: id as unknown as ObjectId },
     });
+
+    console.log({ noteToUpdate, id });
 
     if (!noteToUpdate)
       return {

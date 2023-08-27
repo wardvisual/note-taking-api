@@ -35,6 +35,8 @@ export class UsersService {
 
     user.password = hashedPassword;
 
+    await userRepository.save(user);
+
     const response = {
       isSuccess: true,
       message: "User created",
