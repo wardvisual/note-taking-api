@@ -1,23 +1,26 @@
-import { UsersService, usersService } from "./users.service";
-import { RegisterUser } from "./dto/register-user.dto";
+import { APIResponse } from "@/astronautaking-api/types";
 
+import { usersService } from "./users.service";
+import { RegisterUser } from "./dto/register-user.dto";
 import { Request, Response } from "express";
-import { User } from "./entities/user.entity";
+import { LoginUser } from "./dto/login-user.dto";
 
 export class UsersController {
-  async getUsers(req: Request, res: Response): Promise<void> {
-    const user: User | User[] = await usersService.getUsers();
+  async login(req: Request, res: Response): Promise<void> {
+    const response = await usersService.login(req.body as LoginUser);
 
-    res.json({ user });
+    res.json(response);
   }
 
-  async registerUser(req: Request, res: Response): Promise<void> {
-    const user: RegisterUser = await usersService.registerUser(
+  async register(req: Request, res: Response): Promise<void> {
+    const response: APIResponse = await usersService.register(
       req.body as RegisterUser
     );
 
-    res.json({ user });
+    res.json(response);
   }
 
   loginUser() {}
 }
+
+export const usersController: UsersController = new UsersController();
