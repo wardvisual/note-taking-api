@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 
-import { APIResponse } from "@/astronautaking-api/types";
 import { CreateNote } from "./dto/create-note.dto";
-import { Notes } from "./entities/notes.entity";
 import { notesService } from "./notes.service";
 import { UpdateNote } from "./dto/update-note";
 
