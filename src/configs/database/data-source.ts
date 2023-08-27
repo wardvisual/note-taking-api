@@ -9,7 +9,7 @@ import {
   APP_MONGODB_URL,
 } from "@/astronautaking-api/constants";
 
-const AppDataSource = new TypeormDataSource({
+const appDataSource = new TypeormDataSource({
   type: "mongodb",
   host: APP_MONGODB_HOST,
   url: APP_MONGODB_URL,
@@ -21,21 +21,36 @@ const AppDataSource = new TypeormDataSource({
   entities: [path.join(process.cwd(), "src", "/**/*.entity.{ts,js}")],
 });
 
-AppDataSource.initialize()
-  .then(() => {
+const initializeDataSource = async () => {
+  try {
+    await appDataSource.initialize();
     console.log("DB Connected!");
-  })
-  .catch((err: any) => {
-    console.log(err);
-  });
+  } catch (err) {
+    console.log("Failed to initialize the data source:", err);
+    // Perform additional error handling or logging here
+  }
+};
 
-export const getDataSource = (delay = 3000): Promise<TypeormDataSource> => {
-  if (AppDataSource.isInitialized) return Promise.resolve(AppDataSource);
+export const getDataSource = async (
+  delay = 3000
+): Promise<TypeormDataSource> => {
+  if (appDataSource.isInitialized) {
+    return appDataSource;
+  }
 
+  //@ts-ignore
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (AppDataSource.isInitialized) resolve(AppDataSource);
-      else reject("Failed to create connection with database");
+      if (appDataSource.isInitialized) {
+        resolve(appDataSource);
+      } else {
+        reject(new Error("Failed to create connection with database"));
+      }
     }, delay);
+  }).catch((err) => {
+    console.log("Failed to get the data source:", err);
+    throw err;
   });
 };
+
+initializeDataSource();
