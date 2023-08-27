@@ -1,4 +1,4 @@
-import { Module } from "@/astronautaking-api/types";
+import { Route } from "@/astronautaking-api/types";
 
 import express, { Application, Router } from "express";
 
@@ -23,8 +23,8 @@ export class App {
     }
   }
 
-  public registerModules(routes: Module[]): void {
-    routes.forEach((route: Module) => {
+  public registerModules(routes: Route[]): void {
+    routes.forEach((route: Route) => {
       this.server.use("/api/v1", this.route.use(`/${route.path}`, route.route));
     });
   }

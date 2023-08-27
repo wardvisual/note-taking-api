@@ -1,4 +1,4 @@
-export interface Module {
+export interface Route {
   path: string;
   route: any;
 }

@@ -1,9 +1,9 @@
-import { Module } from "@/astronautaking-api/types";
+import { Route } from "@/astronautaking-api/types";
 
 import { UsersRoutes } from "./users/users.routes";
 import { NotesRoutes } from "./notes/notes.routes";
 
-export const routes: Module[] = [
+export const routes: Route[] = [
   {
     path: "users",
     route: UsersRoutes,
