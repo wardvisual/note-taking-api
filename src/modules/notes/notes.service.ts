@@ -1,8 +1,9 @@
 import { Repository } from "typeorm";
 import { ObjectId } from "mongodb";
 
-import { getDataSource } from "src/lib/configs/database";
-import { APIResponse } from "@/astronautaking-api/types";
+import { getDataSource } from "@/lib/configs/database";
+import { APIResponse } from "@/lib/types";
+
 import { CreateNote } from "./dto/create-note.dto";
 import { Notes } from "./entities/notes.entity";
 import { UpdateNote } from "./dto/update-note";

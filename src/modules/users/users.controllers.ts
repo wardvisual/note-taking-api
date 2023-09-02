@@ -1,9 +1,9 @@
-import { APIResponse } from "@/astronautaking-api/types";
-
-import { usersService } from "./users.service";
-import { RegisterUser } from "./dto/register-user.dto";
 import { Request, Response } from "express";
+
+import { RegisterUser } from "./dto/register-user.dto";
 import { LoginUser } from "./dto/login-user.dto";
+import { usersService } from "./users.service";
+import { APIResponse } from "@/lib/types";
 
 export class UsersController {
   async login(req: Request, res: Response): Promise<void> {

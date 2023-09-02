@@ -1,10 +1,12 @@
-import { getDataSource } from "src/lib/configs/database";
-import { User } from "./entities/user.entity";
-import { RegisterUser } from "./dto/register-user.dto";
 import { Repository } from "typeorm";
+
+import { getDataSource } from "@/lib/configs/database";
+import { PasswordService } from "@/lib/services";
+import { APIResponse } from "@/lib/types";
+
+import { RegisterUser } from "./dto/register-user.dto";
 import { LoginUser } from "./dto/login-user.dto";
-import { PasswordService } from "@/astronautaking-api/services";
-import { APIResponse } from "@/astronautaking-api/types";
+import { User } from "./entities/user.entity";
 
 export class UsersService {
   private userRepositoryPromise: Promise<Repository<User>>;
