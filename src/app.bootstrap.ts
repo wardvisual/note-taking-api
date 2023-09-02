@@ -1,6 +1,6 @@
-import { Route } from "@/astronautaking-api/types";
-
 import express, { Application, Router } from "express";
+
+import { Route } from "@/lib/types";
 
 export class App {
   private readonly server: Application;

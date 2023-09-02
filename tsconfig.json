@@ -9,11 +9,7 @@
     "baseUrl": "./",
     "declaration": true,
     "paths": {
-      "@/astronautaking-api/constants": ["./src/shared/constants"],
-      "@/astronautaking-api/types": ["./src/shared/types"],
-      "@/astronautaking-api/services": ["./src/shared/services"],
-      "@/astronautaking-api/configs": ["./src/configs"],
-      "@/astronautaking-api/database": ["./src/configs/database"]
+      "@/*": ["src/*"]
     },
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@types", "src/shared/types"],

@@ -3,18 +3,20 @@ import "reflect-metadata";
 import cors from "cors";
 import bodyParser from "body-parser";
 
-import { App } from "./app.bootstrap";
-import { APP_PORT } from "@/astronautaking-api/constants";
-import { routes } from "./app.routes";
+import { APP_PORT } from "@/lib/constants";
+import { App } from "@/app.bootstrap";
+import { routes } from "@/app.routes";
 
 const init = (): void => {
   try {
     const app = new App();
 
     app.setGlobalMiddlewares([
-      cors(),
+      cors({
+        credentials: true,
+      }),
       bodyParser.json(),
-      bodyParser.urlencoded({ extended: true }),
+      bodyParser.urlencoded({ extended: false }),
     ]);
 
     app.registerModules(routes);

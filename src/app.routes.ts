@@ -1,7 +1,7 @@
-import { Route } from "@/astronautaking-api/types";
+import { Route } from "@/lib/types";
 
-import { UsersRoutes } from "./users/users.routes";
-import { NotesRoutes } from "./notes/notes.routes";
+import { UsersRoutes } from "./modules/users/users.routes";
+import { NotesRoutes } from "./modules/notes/notes.routes";
 
 export const routes: Route[] = [
   {
