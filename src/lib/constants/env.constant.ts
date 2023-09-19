@@ -9,6 +9,7 @@ interface Env {
   APP_MONGODB_PORT: number;
   APP_MONGODB_NAME: string;
   APP_MONGODB_PASSWORD: string;
+  APP_NODE_ENV: string;
 }
 
 const envs = process.env;
@@ -20,6 +21,7 @@ export const {
   APP_MONGODB_NAME,
   APP_MONGODB_PASSWORD,
   APP_MONGODB_URL,
+  APP_NODE_ENV,
 }: Env = {
   APP_PORT: Number(envs.APP_PORT),
   APP_MONGODB_HOST: envs.APP_MONGODB_HOST,
@@ -27,4 +29,5 @@ export const {
   APP_MONGODB_PORT: Number(envs.APP_MONGODB_PORT),
   APP_MONGODB_NAME: envs.APP_MONGODB_NAME,
   APP_MONGODB_PASSWORD: envs.APP_MONGODB_PASSWORD,
+  APP_NODE_ENV: envs.APP_NODE_ENV,
 };
