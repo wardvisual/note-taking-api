@@ -7,6 +7,7 @@ import {
   APP_MONGODB_NAME,
   APP_MONGODB_PASSWORD,
   APP_MONGODB_URL,
+  APP_NODE_ENV,
 } from "@/lib/constants";
 
 const appDataSource = new TypeormDataSource({
@@ -16,7 +17,7 @@ const appDataSource = new TypeormDataSource({
   database: APP_MONGODB_NAME,
   password: APP_MONGODB_PASSWORD,
   port: APP_MONGODB_PORT,
-  synchronize: true,
+  synchronize: APP_NODE_ENV === "development",
   logging: true,
   entities: [path.join(process.cwd(), "src", "/**/*.entity.{ts,js}")],
 });
